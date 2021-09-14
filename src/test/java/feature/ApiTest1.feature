@@ -9,6 +9,11 @@ Feature: exchange rate api tests
     Given url 'http://api.exchangeratesapi.io/2010-01-12?access_key=466c5621538288db882a6d1091d4f0b7'
     When method GET
     Then status 200
+
+  Scenario: header verification
+    Given url 'http://api.exchangeratesapi.io/2010-01-12?access_key=466c5621538288db882a6d1091d4f0b7'
+    When method GET
+    Then status 200
     # And match header Content-Type contains 'application/json'
     And match header Content-Type == 'application/json; Charset=UTF-8'
     And match header Connection == 'keep-alive'
@@ -18,7 +23,7 @@ Feature: exchange rate api tests
     And match header Date == '#present'
     # this equals to headers().hasHeaderWithName("headername") in restassured
 
-  @wip
+
   Scenario: json body verification
     Given url 'http://api.exchangeratesapi.io/2010-01-12?access_key=466c5621538288db882a6d1091d4f0b7'
     When method get
