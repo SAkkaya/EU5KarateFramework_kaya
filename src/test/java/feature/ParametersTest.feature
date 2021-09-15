@@ -9,7 +9,8 @@ Feature: Parameters examples
 
   Scenario: path parameters
     Given url baseUrl
-    And path "latest?access_key=466c5621538288db882a6d1091d4f0b7"
+    And path "latest"
+    And param access_key = 466c5621538288db882a6d1091d4f0b7
 #    And path "/latest?access_key=466c5621538288db882a6d1091d4f0b7"
     When method get
     Then status 200
@@ -18,7 +19,8 @@ Feature: Parameters examples
 
   Scenario: path parameters with Date
     Given url baseUrl
-    And path "2010-01-12?access_key=466c5621538288db882a6d1091d4f0b7"
+    And path "latest"
+    And param access_key = 466c5621538288db882a6d1091d4f0b7
 #    And path "/2010-01-12?access_key=466c5621538288db882a6d1091d4f0b7"
     When method get
     Then status 200
@@ -76,7 +78,6 @@ Feature: Parameters examples
     * print "Gender " , each response.content
 
 
-  @wip
   Scenario: hr regions example
     Given url hrUrl
     And path 'regions'
@@ -85,3 +86,4 @@ Feature: Parameters examples
      * print response
     And match response.limit == 25
     And match each response.items[*].region_id == '#number'
+#    And print each response.items[*].region_id == 99
